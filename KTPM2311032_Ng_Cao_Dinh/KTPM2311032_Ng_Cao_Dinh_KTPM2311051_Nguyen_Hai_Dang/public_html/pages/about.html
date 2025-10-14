@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Về Chúng Tôi - VietScape Adventures: Giới thiệu thương hiệu du lịch mạo hiểm">
+    <title>Về Chúng Tôi - VietScape Adventures</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #228B22;
+            --primary-blue: #1E90FF;
+            --primary-orange: #FFD700;
+            --dark-overlay: rgba(0, 0, 0, 0.5);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            overflow-x: hidden;
+            padding-top: 60px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        /* Navbar Styling */
+        .navbar {
+            transition: all 0.5s ease;
+            padding: 1rem 0;
+            background-color: rgba(34, 34, 34, 0.95) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .navbar-brand {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: #FFD700 !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .navbar-dark .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+        
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #FFD700 !important;
+        }
+        
+        /* About Header */
+        .about-header {
+            background: linear-gradient(135deg, #228B22 0%, #1E90FF 100%);
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .about-header h1 {
+            font-size: 3rem;
+        }
+        
+        /* Section Styling */
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-orange);
+            border-radius: 2px;
+        }
+        
+        /* Scrollspy Nav */
+        .scrollspy-nav {
+            position: sticky;
+            top: 80px;
+        }
+        
+        .nav-pills .nav-link {
+            color: #666;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .nav-pills .nav-link:hover {
+            color: var(--primary-blue);
+        }
+        
+        .nav-pills .nav-link.active {
+            background: var(--primary-blue);
+            color: white;
+        }
+        
+        /* Team Member */
+        .team-member {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .team-member img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+        
+        .team-member h5 {
+            color: var(--primary-green);
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 12px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 3rem 0 1rem;
+            margin-top: 5rem;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-orange);
+        }
+        
+        .social-links a {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-orange);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .scrollspy-nav {
+                position: static;
+                margin-bottom: 2rem;
+            }
+            
+            .nav-pills {
+                flex-direction: row !important;
+                overflow-x: auto;
+            }
+            
+            .nav-pills .nav-link {
+                margin-right: 1rem;
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#scrollspyNav" data-bs-offset="80">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-compass"></i> VietScape
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Trang Chủ</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="exploreDropdown" role="button" data-bs-toggle="dropdown">
+                            Khám Phá
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="tours.html"><i class="bi bi-mountain"></i> Leo Núi & Trekking</a></li>
+                            <li><a class="dropdown-item" href="tours.html"><i class="bi bi-water"></i> Biển Đảo & Lặn</a></li>
+                            <li><a class="dropdown-item" href="tours.html"><i class="bi bi-geo-alt"></i> Hang Động & Mạo Hiểm</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tours.html">Tours</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Cẩm Nang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">Về Chúng Tôi</a>
+                    </li>
+                </ul>
+                <form class="d-flex search-form ms-3">
+                    <input class="form-control me-2" type="search" placeholder="Tìm kiếm..." aria-label="Search">
+                    <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="about-header">
+        <div class="container text-center">
+            <h1><i class="bi bi-info-circle"></i> Về VietScape Adventures</h1>
+            <p>Kết nối bạn với thiên nhiên hùng vĩ của Việt Nam qua những chuyến phiêu lưu đáng nhớ</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="row">
+            <!-- Scrollspy Nav -->
+            <div class="col-md-3">
+                <nav id="scrollspyNav" class="scrollspy-nav">
+                    <div class="nav nav-pills flex-column">
+                        <a class="nav-link" href="#story">Câu Chuyện Của Chúng Tôi</a>
+                        <a class="nav-link" href="#team">Đội Ngũ</a>
+                        <a class="nav-link" href="#contact">Liên Hệ</a>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="col-md-9">
+                <!-- Story Section -->
+                <section id="story" class="section">
+                    <h2 class="section-title">Câu Chuyện Của Chúng Tôi</h2>
+                    <p>VietScape Adventures được thành lập năm 2010 với sứ mệnh mang đến những trải nghiệm du lịch mạo hiểm an toàn và bền vững tại Việt Nam. Từ trekking Fansipan đến lặn biển Phú Quốc, chúng tôi đã đồng hành cùng hàng ngàn du khách khám phá vẻ đẹp hoang dã.</p>
+                    <p>Chúng tôi cam kết bảo vệ môi trường và hỗ trợ cộng đồng địa phương qua mọi tour.</p>
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200" alt="Câu chuyện" class="img-fluid rounded">
+                </section>
+
+                <!-- Team Section -->
+                <section id="team" class="section bg-light">
+                    <h2 class="section-title">Đội Ngũ Chuyên Gia</h2>
+                    <div class="row">
+                        <div class="col-md-4 team-member">
+                            <figure>
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="Thành viên 1" class="rounded-circle">
+                                <figcaption>
+                                    <h5>Nguyễn Văn A</h5>
+                                    <p>Giám Đốc</p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-4 team-member">
+                            <figure>
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400" alt="Thành viên 2" class="rounded-circle">
+                                <figcaption>
+                                    <h5>Trần Thị B</h5>
+                                    <p>Hướng Dẫn Viên</p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-4 team-member">
+                            <figure>
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400" alt="Thành viên 3" class="rounded-circle">
+                                <figcaption>
+                                    <h5>Lê Văn C</h5>
+                                    <p>Chuyên Gia Mạo Hiểm</p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section id="contact" class="section">
+                    <h2 class="section-title">Liên Hệ Với Chúng Tôi</h2>
+                    <div class="contact-form">
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label">Họ Tên</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Tiêu Đề</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Nội Dung</label>
+                                <textarea class="form-control" rows="5"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Gửi</button>
+                        </form>
+                    </div>
+                    <div class="btn-group mt-3">
+                        <a href="#" class="btn btn-outline-primary"><i class="bi bi-facebook"></i> Facebook</a>
+                        <a href="#" class="btn btn-outline-primary"><i class="bi bi-instagram"></i> Instagram</a>
+                        <a href="#" class="btn btn-outline-primary"><i class="bi bi-youtube"></i> YouTube</a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4 class="mb-3"><i class="bi bi-compass"></i> VietScape Adventures</h4>
+                    <p>Đồng hành cùng bạn trong mọi hành trình khám phá vẻ đẹp hoang dã Việt Nam</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                        <a href="#"><i class="bi bi-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Liên Kết Nhanh</h5>
+                    <div class="footer-links">
+                        <a href="index.html">Trang Chủ</a>
+                        <a href="tours.html">Danh Sách Tours</a>
+                        <a href="blog.html">Cẩm Nang Du Lịch</a>
+                        <a href="about.html">Về Chúng Tôi</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Liên Hệ</h5>
+                    <p><i class="bi bi-geo-alt"></i> 123 Đường ABC, TP Cần Thơ</p>
+                    <p><i class="bi bi-telephone"></i> 1900 0000</p>
+                    <p><i class="bi bi-envelope"></i> contact@vietscape.vn</p>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: #444;">
+            <div class="text-center">
+                <p>&copy; 2025 VietScape Adventures. All rights reserved. Designed with Nguyễn Cao Đỉnh <i class="bi bi-heart-fill" style="color: #FFD700;"></i></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Contact form submission
+        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Tin nhắn đã gửi! Chúng tôi sẽ liên hệ sớm.');
+        });
+    </script>
+</body>
+</html>
