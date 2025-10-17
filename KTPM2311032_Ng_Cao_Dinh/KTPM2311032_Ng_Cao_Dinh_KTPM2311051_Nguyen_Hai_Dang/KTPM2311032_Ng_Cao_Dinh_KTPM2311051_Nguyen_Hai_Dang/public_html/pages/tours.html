@@ -79,7 +79,9 @@
         .navbar-dark .navbar-nav .nav-link:hover {
             color: #FFD700 !important;
         }
-        
+        .fixed-top{
+            z-index: 9999;
+        }
         /* Search Form */
         .search-form {
             max-width: 300px;
@@ -564,13 +566,48 @@
                 margin-bottom: 2rem;
             }
         }
+
+        /* Enhanced Modal Styles for Better UX */
+        .modal-content {
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--forest-green), #1a6b1a);
+            color: white;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+        }
+
+        .modal-title {
+            font-weight: 700;
+        }
+
+        .modal-body p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .modal-body strong {
+            color: var(--forest-green);
+        }
+
+        .modal-footer .btn-primary {
+            background: var(--ocean-blue);
+            border: none;
+        }
+
+        .modal-footer .btn-primary:hover {
+            background: #0c7de6;
+        }
     </style>
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top transparent">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="../index.html">
                 <i class="bi bi-compass"></i> VietScape
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -579,7 +616,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../public_html/index.html">Trang Chủ</a>
+                        <a class="nav-link" href="../index.html">Trang Chủ</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="exploreDropdown" role="button" data-bs-toggle="dropdown">
@@ -592,13 +629,13 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="tours.html">Tours</a>
+                        <a class="nav-link active" href="../pages/tours.html">Tours</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="blog.html">Cẩm Nang</a>
+                        <a class="nav-link" href="../pages/blog.html">Cẩm Nang</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">Về Chúng Tôi</a>
+                        <a class="nav-link" href="../pages/about.html">Về Chúng Tôi</a>
                     </li>
                 </ul>
                 <form class="d-flex search-form ms-3">
@@ -787,7 +824,7 @@
                                         </div>
                                         <div class="tour-price">$450</div>
                                     </div>
-                                    <a href="tour-detail.html" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</a>
+                                    <button data-bs-toggle="modal" data-bs-target="#tourDetailModal" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</button>
                                 </div>
                             </div>
                         </div>
@@ -816,7 +853,7 @@
                                         </div>
                                         <div class="tour-price">$380</div>
                                     </div>
-                                    <a href="tour-detail.html" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</a>
+                                    <button data-bs-toggle="modal" data-bs-target="#tourDetailModal" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</button>
                                 </div>
                             </div>
                         </div>
@@ -845,7 +882,7 @@
                                         </div>
                                         <div class="tour-price">$520</div>
                                     </div>
-                                    <a href="tour-detail.html" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</a>
+                                    <button data-bs-toggle="modal" data-bs-target="#tourDetailModal" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</button>
                                 </div>
                             </div>
                         </div>
@@ -873,7 +910,7 @@
                                         </div>
                                         <div class="tour-price">$420</div>
                                     </div>
-                                    <a href="tour-detail.html" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</a>
+                                    <button data-bs-toggle="modal" data-bs-target="#tourDetailModal" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</button>
                                 </div>
                             </div>
                         </div>
@@ -902,7 +939,7 @@
                                         </div>
                                         <div class="tour-price">$650</div>
                                     </div>
-                                    <a href="tour-detail.html" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</a>
+                                    <button data-bs-toggle="modal" data-bs-target="#tourDetailModal" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</button>
                                 </div>
                             </div>
                         </div>
@@ -930,7 +967,7 @@
                                         </div>
                                         <div class="tour-price">$390</div>
                                     </div>
-                                    <a href="tour-detail.html" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</a>
+                                    <button data-bs-toggle="modal" data-bs-target="#tourDetailModal" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</button>
                                 </div>
                             </div>
                         </div>
@@ -959,7 +996,7 @@
                                         </div>
                                         <div class="tour-price">$280</div>
                                     </div>
-                                    <a href="tour-detail.html" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</a>
+                                    <button data-bs-toggle="modal" data-bs-target="#tourDetailModal" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</button>
                                 </div>
                             </div>
                         </div>
@@ -987,7 +1024,7 @@
                                         </div>
                                         <div class="tour-price">$410</div>
                                     </div>
-                                    <a href="tour-detail.html" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</a>
+                                    <button data-bs-toggle="modal" data-bs-target="#tourDetailModal" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</button>
                                 </div>
                             </div>
                         </div>
@@ -1015,7 +1052,7 @@
                                         </div>
                                         <div class="tour-price">$360</div>
                                     </div>
-                                    <a href="tour-detail.html" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</a>
+                                    <button data-bs-toggle="modal" data-bs-target="#tourDetailModal" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</button>
                                 </div>
                             </div>
                         </div>
@@ -1044,7 +1081,7 @@
                                         </div>
                                         <div class="tour-price">$320</div>
                                     </div>
-                                    <a href="tour-detail.html" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</a>
+                                    <button data-bs-toggle="modal" data-bs-target="#tourDetailModal" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</button>
                                 </div>
                             </div>
                         </div>
@@ -1072,7 +1109,7 @@
                                         </div>
                                         <div class="tour-price">$445</div>
                                     </div>
-                                    <a href="tour-detail.html" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</a>
+                                    <button data-bs-toggle="modal" data-bs-target="#tourDetailModal" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</button>
                                 </div>
                             </div>
                         </div>
@@ -1101,7 +1138,7 @@
                                         </div>
                                         <div class="tour-price">$485</div>
                                     </div>
-                                    <a href="tour-detail.html" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</a>
+                                    <button data-bs-toggle="modal" data-bs-target="#tourDetailModal" class="view-btn"><i class="bi bi-arrow-right"></i> Xem Chi Tiết</button>
                                 </div>
                             </div>
                         </div>
@@ -1123,6 +1160,25 @@
             </div>
         </div>
     </section>
+
+    <!-- Tour Detail Modal -->
+    <div class="modal fade" id="tourDetailModal" tabindex="-1" aria-labelledby="tourDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tourDetailModalLabel">Chi Tiết Tour</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Dynamic content will be injected here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary">Đặt Ngay</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-5 mt-5">
@@ -1156,7 +1212,7 @@
             </div>
             <hr class="my-4" style="border-color: #444;">
             <div class="text-center">
-                <p>&copy; 2025 VietScape Adventures. All rights reserved. Designed with Nguyễn Cao Đỉnh <i class="bi bi-heart-fill" style="color: #FFD700;"></i></p>
+                <p>&copy; 2025 VietScape Adventures — Designed with ❤️ by Cao Đỉnh & Hải Đăng <i class="bi bi-heart-fill" style="color: #FFD700;"></i></p>
             </div>
         </div>
     </footer>
@@ -1400,6 +1456,39 @@
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.6s ease';
             observer.observe(el);
+        });
+
+        // Handle View Details Button with Modal
+        const viewBtns = document.querySelectorAll('.view-btn');
+        const modalTitle = document.getElementById('tourDetailModalLabel');
+        const modalBody = document.querySelector('#tourDetailModal .modal-body');
+
+        viewBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const card = btn.closest('.tour-card');
+                const title = card.querySelector('.tour-card-title').textContent;
+                const type = card.querySelector('.tour-card-type').textContent;
+                const desc = card.querySelector('.tour-card-desc').textContent;
+                const duration = card.querySelector('.detail-item:nth-child(1) span').textContent;
+                const difficulty = card.querySelector('.detail-item:nth-child(2) span').textContent;
+                const price = card.querySelector('.tour-price').textContent;
+                const imgSrc = card.querySelector('img').src;
+                const popularity = card.dataset.popularity;
+                const rating = card.dataset.rating;
+
+                modalTitle.textContent = title;
+                modalBody.innerHTML = `
+                    <img src="${imgSrc}" alt="${title}" class="img-fluid mb-3" style="border-radius: 0.5rem;">
+                    <p><strong>Loại Tour:</strong> ${type}</p>
+                    <p><strong>Mô tả:</strong> ${desc}</p>
+                    <p><strong>Thời lượng:</strong> ${duration}</p>
+                    <p><strong>Độ khó:</strong> ${difficulty}</p>
+                    <p><strong>Giá:</strong> ${price}</p>
+                    <p><strong>Phổ biến:</strong> ${popularity}%</p>
+                    <p><strong>Đánh giá:</strong> ${rating}/5</p>
+                    <p><strong>Thông tin thêm:</strong> Đây là tour du lịch mạo hiểm hấp dẫn, bao gồm hướng dẫn viên chuyên nghiệp, bữa ăn, và thiết bị an toàn. Lịch trình chi tiết: Ngày 1 - Khởi hành và khám phá cơ bản; Ngày 2 - Hoạt động chính; Ngày cuối - Trở về. Lưu ý: Mang theo đồ dùng cá nhân và tuân thủ quy định an toàn.</p>
+                `;
+            });
         });
     </script>
 </body>

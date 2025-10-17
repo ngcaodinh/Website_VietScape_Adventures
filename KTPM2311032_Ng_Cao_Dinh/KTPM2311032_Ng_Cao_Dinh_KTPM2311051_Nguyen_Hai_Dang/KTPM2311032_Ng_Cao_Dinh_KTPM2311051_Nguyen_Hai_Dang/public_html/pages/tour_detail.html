@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Chi tiết tour Chinh Phục Fansipan - VietScape Adventures">
     <title>Chinh Phục Fansipan - VietScape Adventures</title>
-    
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
             --primary-green: #228B22;
@@ -22,88 +23,66 @@
             --primary-orange: #FFD700;
             --dark-overlay: rgba(0, 0, 0, 0.5);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Lato', sans-serif;
             overflow-x: hidden;
         }
-        
-        h1, h2, h3, h4, h5, h6 {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
         }
-        
+
         /* Navbar Styling */
         .navbar {
             transition: all 0.5s ease;
             padding: 1rem 0;
         }
-        
+
         .navbar.transparent {
             background-color: transparent !important;
         }
-        
+
         .navbar.scrolled {
             background-color: rgba(34, 34, 34, 0.95) !important;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
-        
+
         .navbar-brand {
             font-family: 'Montserrat', sans-serif;
             font-weight: 800;
             font-size: 1.8rem;
             color: #FFD700 !important;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
-        
+
         .navbar-dark .navbar-nav .nav-link {
             color: #fff !important;
             font-weight: 500;
             margin: 0 0.5rem;
             transition: color 0.3s;
         }
-        
+
         .navbar-dark .navbar-nav .nav-link:hover {
             color: #FFD700 !important;
         }
-        
-        /* Section Styling */
-        section {
-            padding: 5rem 0;
+
+        .search-form {
+            max-width: 300px;
         }
-        
-        .section-title {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--primary-green);
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--primary-orange);
-            border-radius: 2px;
-        }
-        
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 3rem;
-        }
-        
+
         /* Tour Detail Specific */
         .tour-header {
             background-size: cover;
@@ -112,7 +91,7 @@
             position: relative;
             color: white;
         }
-        
+
         .tour-header::before {
             content: '';
             position: absolute;
@@ -120,55 +99,73 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));
         }
-        
+
         .tour-header-content {
             position: absolute;
             bottom: 20%;
             left: 5%;
             z-index: 1;
         }
-        
+
         .tour-header h1 {
             font-size: 3.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
-        
+
         .tour-meta {
             font-size: 1.1rem;
             opacity: 0.9;
         }
-        
+
         .booking-box {
             background: white;
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             padding: 2rem;
             position: sticky;
             top: 100px;
         }
-        
+
         .booking-box .price {
             font-size: 2.5rem;
             color: var(--primary-blue);
             font-weight: 700;
         }
-        
+
         .rating-stars {
             color: var(--primary-orange);
             font-size: 1.2rem;
         }
-        
+
         .gallery img {
             border-radius: 10px;
             transition: transform 0.3s;
+
         }
-        
+
         .gallery img:hover {
             transform: scale(1.05);
+
         }
-        
+
+        .gallery .image-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            /* Tỷ lệ khung hình cố định */
+            overflow: hidden;
+        }
+
+        .gallery img {
+            border-radius: 10px;
+            transition: transform 0.3s;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         /* Tabs Styling */
         .nav-tabs .nav-link {
             font-weight: 600;
@@ -177,63 +174,93 @@
             border-bottom: 2px solid transparent;
             transition: all 0.3s;
         }
-        
+
         .nav-tabs .nav-link:hover {
             color: var(--primary-green);
             border-bottom: 2px solid var(--primary-green);
         }
-        
+
         .nav-tabs .nav-link.active {
             color: var(--primary-green);
             border-bottom: 2px solid var(--primary-green);
         }
-        
+
         /* Accordion Styling */
         .accordion-button {
             font-weight: 600;
             color: var(--primary-green);
         }
-        
+
         .accordion-button:not(.collapsed) {
             background-color: var(--primary-blue);
             color: white;
         }
-        
+
         /* Table Styling */
         .table th {
             background-color: var(--primary-green);
             color: white;
         }
-        
+
         /* Modal Styling */
         .modal-header {
             background: var(--primary-green);
             color: white;
         }
-        
+
+        /* Footer Styling */
+        footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-orange);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.4rem;
+            }
+
             .tour-header h1 {
                 font-size: 2rem;
             }
-            
+
             .booking-box {
                 position: static;
                 margin-top: 2rem;
             }
         }
-        
-        .search-form {
-            max-width: 300px;
-        }
     </style>
 </head>
-<body>
 
+<body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top transparent">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="../index.html">
                 <i class="bi bi-compass"></i> VietScape
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -242,26 +269,30 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Trang Chủ</a>
+                        <a class="nav-link" href="../index.html">Trang Chủ</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="exploreDropdown" role="button" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="exploreDropdown" role="button"
+                            data-bs-toggle="dropdown">
                             Khám Phá
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="tours.html"><i class="bi bi-mountain"></i> Leo Núi & Trekking</a></li>
-                            <li><a class="dropdown-item" href="tours.html"><i class="bi bi-water"></i> Biển Đảo & Lặn</a></li>
-                            <li><a class="dropdown-item" href="tours.html"><i class="bi bi-geo-alt"></i> Hang Động & Mạo Hiểm</a></li>
+                            <li><a class="dropdown-item" href="../pages/tours.html"><i class="bi bi-mountain"></i> Leo
+                                    Núi & Trekking</a></li>
+                            <li><a class="dropdown-item" href="../pages/tours.html"><i class="bi bi-water"></i> Biển Đảo
+                                    & Lặn</a></li>
+                            <li><a class="dropdown-item" href="../pages/tours.html"><i class="bi bi-geo-alt"></i> Hang
+                                    Động & Mạo Hiểm</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="tours.html">Tours</a>
+                        <a class="nav-link active" href="../pages/tours.html">Tours</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="blog.html">Cẩm Nang</a>
+                        <a class="nav-link" href="../pages/blog.html">Cẩm Nang</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">Về Chúng Tôi</a>
+                        <a class="nav-link" href="../pages/about.html">Về Chúng Tôi</a>
                     </li>
                 </ul>
                 <form class="d-flex search-form ms-3">
@@ -273,13 +304,14 @@
     </nav>
 
     <!-- Tour Header -->
-    <div class="tour-header" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920');">
+    <div class="tour-header"
+        style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920');">
         <div class="tour-header-content">
             <div class="container">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html" class="text-white">Trang Chủ</a></li>
-                        <li class="breadcrumb-item"><a href="tours.html" class="text-white">Tours</a></li>
+                        <li class="breadcrumb-item"><a href="../index.html" class="text-white">Trang Chủ</a></li>
+                        <li class="breadcrumb-item"><a href="../pages/tours.html" class="text-white">Tours</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Chinh Phục Fansipan</li>
                     </ol>
                 </nav>
@@ -288,7 +320,9 @@
                     <span class="me-3"><i class="bi bi-clock"></i> 3 ngày 2 đêm</span>
                     <span class="me-3"><i class="bi bi-people"></i> Tối đa 15 người</span>
                     <span class="me-3"><i class="bi bi-difficulty"></i> Khó</span>
-                    <span class="rating-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i> 4.8 (120 đánh giá)</span>
+                    <span class="rating-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                        4.8 (120 đánh giá)</span>
                 </div>
             </div>
         </div>
@@ -301,19 +335,24 @@
                 <div class="col-lg-7">
                     <!-- Gallery -->
                     <div class="mb-5">
+                        <br>
                         <h2 class="section-title">Hình Ảnh Tour</h2>
                         <div class="row g-2 gallery">
                             <div class="col-12">
-                                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800" class="img-fluid w-100" alt="Fansipan Peak">
+                                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800"
+                                    class="img-fluid w-100" alt="Fansipan Peak">
                             </div>
                             <div class="col-4">
-                                <img src="https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=400" class="img-fluid" alt="Trekking Path">
+                                <img src="https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=400"
+                                    class="img-fluid" alt="Trekking Path">
                             </div>
                             <div class="col-4">
-                                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400" class="img-fluid" alt="Mountain View">
+                                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400"
+                                    class="img-fluid" alt="Mountain View">
                             </div>
                             <div class="col-4">
-                                <img src="https://images.unsplash.com/photo-1506744038136-46273869b3fb?w=400" class="img-fluid" alt="Sunrise">
+                                <img src="https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2022/10/30/1110798/Dinh-Fan-Si-Pan-01.jpg"
+                                    class="img-fluid" alt="Sunrise">
                             </div>
                         </div>
                     </div>
@@ -321,13 +360,16 @@
                     <!-- Tabs -->
                     <ul class="nav nav-tabs mb-4" id="tourTabs" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="itinerary-tab" data-bs-toggle="tab" data-bs-target="#itinerary" type="button" role="tab">Lịch Trình</button>
+                            <button class="nav-link active" id="itinerary-tab" data-bs-toggle="tab"
+                                data-bs-target="#itinerary" type="button" role="tab">Lịch Trình</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#details" type="button" role="tab">Chi Tiết Dịch Vụ</button>
+                            <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#details"
+                                type="button" role="tab">Chi Tiết Dịch Vụ</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab">Đánh Giá</button>
+                            <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
+                                type="button" role="tab">Đánh Giá</button>
                         </li>
                     </ul>
                     <div class="tab-content" id="tourTabsContent">
@@ -335,13 +377,16 @@
                             <div class="accordion" id="itineraryAccordion">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="day1">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDay1">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseDay1">
                                             Ngày 1: Sapa - Trạm Tôn (Ăn trưa, tối)
                                         </button>
                                     </h2>
-                                    <div id="collapseDay1" class="accordion-collapse collapse show" data-bs-parent="#itineraryAccordion">
+                                    <div id="collapseDay1" class="accordion-collapse collapse show"
+                                        data-bs-parent="#itineraryAccordion">
                                         <div class="accordion-body">
-                                            <p>Đón tại Sapa, di chuyển đến Trạm Tôn. Trekking qua rừng trúc và rừng nguyên sinh. Nghỉ đêm tại lán trại 2200m.</p>
+                                            <p>Đón tại Sapa, di chuyển đến Trạm Tôn. Trekking qua rừng trúc và rừng
+                                                nguyên sinh. Nghỉ đêm tại lán trại 2200m.</p>
                                             <ul>
                                                 <li>Ăn sáng tự túc</li>
                                                 <li>Ăn trưa picnic</li>
@@ -352,13 +397,16 @@
                                 </div>
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="day2">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDay2">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseDay2">
                                             Ngày 2: Chinh Phục Đỉnh - Trở Về (Ăn sáng, trưa, tối)
                                         </button>
                                     </h2>
-                                    <div id="collapseDay2" class="accordion-collapse collapse" data-bs-parent="#itineraryAccordion">
+                                    <div id="collapseDay2" class="accordion-collapse collapse"
+                                        data-bs-parent="#itineraryAccordion">
                                         <div class="accordion-body">
-                                            <p>Dậy sớm chinh phục đỉnh Fansipan 3143m. Ngắm bình minh, chụp ảnh. Trở về Sapa qua cáp treo hoặc trekking.</p>
+                                            <p>Dậy sớm chinh phục đỉnh Fansipan 3143m. Ngắm bình minh, chụp ảnh. Trở về
+                                                Sapa qua cáp treo hoặc trekking.</p>
                                             <ul>
                                                 <li>Ăn sáng tại lán</li>
                                                 <li>Ăn trưa tại đỉnh</li>
@@ -369,11 +417,13 @@
                                 </div>
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="day3">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDay3">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseDay3">
                                             Ngày 3: Khám Phá Sapa - Kết Thúc (Ăn sáng)
                                         </button>
                                     </h2>
-                                    <div id="collapseDay3" class="accordion-collapse collapse" data-bs-parent="#itineraryAccordion">
+                                    <div id="collapseDay3" class="accordion-collapse collapse"
+                                        data-bs-parent="#itineraryAccordion">
                                         <div class="accordion-body">
                                             <p>Thăm bản Cát Cát, chợ Sapa. Kết thúc tour, tiễn khách.</p>
                                             <ul>
@@ -430,7 +480,9 @@
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
                                         <h5 class="card-title">Nguyễn Văn A</h5>
-                                        <span class="rating-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                                        <span class="rating-stars"><i class="bi bi-star-fill"></i><i
+                                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
                                     </div>
                                     <p class="card-text">Tour tuyệt vời, hướng dẫn viên nhiệt tình!</p>
                                 </div>
@@ -439,7 +491,9 @@
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
                                         <h5 class="card-title">Trần Thị B</h5>
-                                        <span class="rating-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
+                                        <span class="rating-stars"><i class="bi bi-star-fill"></i><i
+                                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                                class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
                                     </div>
                                     <p class="card-text">Cảnh đẹp mê hồn, đáng giá từng đồng.</p>
                                 </div>
@@ -472,7 +526,8 @@
                                 <label for="date" class="form-label">Ngày Khởi Hành</label>
                                 <input type="date" class="form-control" id="date">
                             </div>
-                            <button type="button" class="btn btn-warning btn-lg w-100" data-bs-toggle="modal" data-bs-target="#bookingModal">Đặt Ngay</button>
+                            <button type="button" class="btn btn-warning btn-lg w-100" data-bs-toggle="modal"
+                                data-bs-target="#bookingModal">Đặt Ngay</button>
                         </form>
                     </div>
                 </div>
@@ -486,7 +541,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="bookingModalLabel">Xác Nhận Đặt Tour</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
                     <i class="bi bi-check-circle-fill" style="font-size: 3rem; color: var(--primary-green);"></i>
@@ -516,32 +572,32 @@
                 <div class="col-md-4 mb-4">
                     <h5 class="mb-3">Liên Kết Nhanh</h5>
                     <div class="footer-links">
-                        <a href="index.html">Trang Chủ</a>
-                        <a href="tours.html">Danh Sách Tours</a>
-                        <a href="blog.html">Cẩm Nang Du Lịch</a>
-                        <a href="about.html">Về Chúng Tôi</a>
+                        <a href="../index.html">Trang Chủ</a>
+                        <a href="../pages/tours.html">Danh Sách Tours</a>
+                        <a href="../pages/blog.html">Cẩm Nang Du Lịch</a>
+                        <a href="../pages/about.html">Về Chúng Tôi</a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <h5 class="mb-3">Liên Hệ</h5>
-                    <p><i class="bi bi-geo-alt"></i>123 Đường ABC, TP Cần Thơ</p>
-                    <p><i class="bi bi-telephone"></i> 1900 0000</p>
-                    <p><i class="bi bi-envelope"></i> contact@vietscape.vn</p>
+                    <p><i class="bi bi-geo-alt"></i> 123 Đường ABC, TP Hồ Chí Minh</p>
+                    <p><i class="bi bi-telephone"></i> 1900 1234</p>
+                    <p><i class="bi bi-envelope"></i> info@vietscape.com</p>
                 </div>
             </div>
             <hr class="my-4" style="border-color: #444;">
             <div class="text-center">
-                <p>&copy; 2025 VietScape Adventures. All rights reserved. Designed with Nguyễn Cao Đỉnh <i class="bi bi-heart-fill" style="color: #FFD700;"></i></p>
+                <p>&copy;2025 VietScape Adventures — Designed with ❤️ by Cao Đỉnh & Hải Đăng.</p>
             </div>
         </div>
     </footer>
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <script>
         // Navbar scroll effect
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
                 navbar.classList.remove('transparent');
@@ -567,4 +623,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -433,10 +433,36 @@
                 font-size: 1.8rem;
             }
         }
+
+        /* Scroll to Top Button */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            /* Ẩn mặc định */
+            z-index: 1000;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            opacity: 0.8;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            /* Hiệu ứng mượt */
+        }
+
+        #scrollToTopBtn:hover {
+            opacity: 1;
+            transform: translateY(-5px);
+            /* Nâng nhẹ khi hover */
+        }
     </style>
 </head>
 
 <body>
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="btn btn-primary rounded-circle" title="Lên đầu trang">
+        <i class="bi bi-arrow-up"></i>
+    </button>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top transparent">
@@ -458,22 +484,25 @@
                             Khám Phá
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../pages/tours.html"><i class="bi bi-mountain"></i> Leo Núi &
+                            <li><a class="dropdown-item" href="../public_html/pages/tour_detail.html"><i
+                                        class="bi bi-mountain"></i> Leo Núi &
                                     Trekking</a></li>
-                            <li><a class="dropdown-item" href="../pages/tours.html"><i class="bi bi-water"></i> Biển Đảo &
+                            <li><a class="dropdown-item" href="../public_html/pages/tours.html"><i
+                                        class="bi bi-water"></i> Biển Đảo &
                                     Lặn</a></li>
-                            <li><a class="dropdown-item" href="../pages/tours.html"><i class="bi bi-geo-alt"></i> Hang Động & Mạo
+                            <li><a class="dropdown-item" href="../pages/tours.html"><i class="bi bi-geo-alt"></i> Hang
+                                    Động & Mạo
                                     Hiểm</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../pages/tours.html">Tours</a>
+                        <a class="nav-link" href="../public_html/pages/tours.html">Tours</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../pages/blog.html">Cẩm Nang</a>
+                        <a class="nav-link" href="../public_html/pages/blog.html">Cẩm Nang</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../pages/about.html">Về Chúng Tôi</a>
+                        <a class="nav-link" href="../public_html/pages/about.html">Về Chúng Tôi</a>
                     </li>
                 </ul>
                 <form class="d-flex search-form ms-3">
@@ -569,8 +598,8 @@
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card tour-card">
-                        <img src="https://qbtravel.vn/wp-content/uploads/2024/09/c1481bd2fdcaf116a051854065ca67d6.jpg" class="card-img-top"
-                            alt="Phong Nha Cave">
+                        <img src="https://qbtravel.vn/wp-content/uploads/2024/09/c1481bd2fdcaf116a051854065ca67d6.jpg"
+                            class="card-img-top" alt="Phong Nha Cave">
                         <div class="card-body">
                             <span class="badge badge-custom">MỚI</span>
                             <h5 class="card-title">Thám Hiểm Hang Sơn Đoòng 5 Ngày</h5>
@@ -586,8 +615,8 @@
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card tour-card">
-                        <img src="https://cdn-images.vtv.vn/thumb_w/1200/66349b6076cb4dee98746cf1/2025/04/07/z6481193786232-7d81ee7bd619d50267ffae0142c8421c-66625569200977396473103.jpg" class="card-img-top"
-                            alt="Diving Nha Trang">
+                        <img src="https://cdn-images.vtv.vn/thumb_w/1200/66349b6076cb4dee98746cf1/2025/04/07/z6481193786232-7d81ee7bd619d50267ffae0142c8421c-66625569200977396473103.jpg"
+                            class="card-img-top" alt="Diving Nha Trang">
                         <div class="card-body">
                             <h5 class="card-title">Lặn Biển Nha Trang 4 Ngày 3 Đêm</h5>
                             <p class="card-text">Khám phá thế giới đại dương đầy màu sắc, lặn ngắm san hô tại vùng biển
@@ -730,7 +759,7 @@
             </div>
             <hr class="my-4" style="border-color: #444;">
             <div class="text-center">
-                <p>&copy; 2024 VietScape Adventures. All rights reserved.</p>
+                <p>&copy; 2025 VietScape Adventures — Designed with ❤️ by Cao Đỉnh & Hải Đăng </p>
             </div>
         </div>
     </footer>
@@ -884,6 +913,25 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+        // Lấy nút
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+        // Hiển thị nút khi cuộn xuống
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) { // Hiển thị khi cuộn xuống 300px
+                scrollToTopBtn.style.display = 'block';
+            } else {
+                scrollToTopBtn.style.display = 'none';
+            }
+        });
+
+        // Cuộn mượt lên đầu khi click
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
         // Navbar scroll effect
         window.addEventListener('scroll', function () {
             const navbar = document.querySelector('.navbar');

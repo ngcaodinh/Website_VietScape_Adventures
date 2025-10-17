@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VietScape Adventures - Cẩm nang du lịch mạo hiểm Việt Nam">
+    <title>Cẩm Nang Du Lịch - VietScape Adventures</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-green: #228B22;
+            --primary-blue: #1E90FF;
+            --primary-orange: #FFD700;
+            --dark-overlay: rgba(0, 0, 0, 0.5);
+            --forest-green: #228B22;
+            --ocean-blue: #1E90FF;
+            --gold-accent: #FFD700;
+            --dark-bg: #1a1a1a;
+            --light-gray: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #333;
+            background: var(--light-gray);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            transition: all 0.5s ease;
+            padding: 1rem 0;
+            background-color: rgba(34, 34, 34, 0.95) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar.transparent {
+            background-color: transparent !important;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(34, 34, 34, 0.95) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-brand {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: #FFD700 !important;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #FFD700 !important;
+        }
+
+        .search-form {
+            max-width: 300px;
+        }
+
+        /* Blog Section Styling */
+        .page-header {
+            background: linear-gradient(135deg, #1a3a52 0%, #0f1419 100%);
+            padding: 4rem 0;
+            color: white;
+            margin-bottom: 3rem;
+            border-bottom: 3px solid var(--gold-accent);
+        }
+
+        .page-header h1 {
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .breadcrumb-custom {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb-custom a {
+            color: var(--gold-accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .breadcrumb-custom a:hover {
+            color: white;
+        }
+
+        .blog-section {
+            padding: 3rem 0;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-card-row {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 0;
+        }
+
+        .blog-card-img {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .blog-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .blog-card:hover .blog-card-img img {
+            transform: scale(1.08);
+        }
+
+        .blog-date-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--forest-green);
+            color: white;
+            padding: 0.8rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            font-size: 0.9rem;
+            z-index: 10;
+        }
+
+        .blog-date-badge .day {
+            display: block;
+            font-size: 1.5rem;
+        }
+
+        .blog-card-body {
+            padding: 2rem;
+        }
+
+        .blog-card-title {
+            color: var(--forest-green);
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-meta-item i {
+            color: var(--ocean-blue);
+        }
+
+        .blog-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .blog-tag {
+            display: inline-block;
+            background: rgba(34, 139, 34, 0.1);
+            color: var(--forest-green);
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .blog-tag:hover {
+            background: var(--forest-green);
+            color: white;
+        }
+
+        .blog-card-desc {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .read-more-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--forest-green), #1a6b1a);
+            color: white;
+            padding: 0.7rem 1.8rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .read-more-btn:hover {
+            color: white;
+            transform: translateX(3px);
+            box-shadow: 0 5px 15px rgba(34, 139, 34, 0.3);
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            margin-top: 2rem;
+        }
+
+        .sidebar-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--forest-green);
+        }
+
+        .sidebar-card h5 {
+            color: var(--forest-green);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sidebar-card h5 i {
+            font-size: 1.4rem;
+            color: var(--ocean-blue);
+        }
+
+        .sidebar-list {
+            list-style: none;
+        }
+
+        .sidebar-list li {
+            margin-bottom: 0.8rem;
+        }
+
+        .sidebar-list a {
+            color: #666;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sidebar-list a:hover {
+            color: var(--forest-green);
+            padding-left: 0.5rem;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #ddd;
+            border-radius: 0.5rem;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--forest-green);
+            box-shadow: 0 0 0 3px rgba(34, 139, 34, 0.1);
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: var(--forest-green);
+            border: none;
+            color: white;
+            padding: 0.8rem 1rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-box button:hover {
+            background: var(--ocean-blue);
+        }
+
+        /* Pagination Styling */
+        .pagination-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 3rem 0;
+            gap: 1rem;
+        }
+
+        .page-link {
+            background: white;
+            border: 2px solid #ddd;
+            color: var(--forest-green);
+            padding: 0.6rem 0.9rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .page-link:hover {
+            background: var(--forest-green);
+            border-color: var(--forest-green);
+            color: white;
+        }
+
+        .page-link.active {
+            background: var(--forest-green);
+            border-color: var(--forest-green);
+            color: white;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.4rem;
+            }
+
+            .page-header {
+                padding: 2rem 0;
+                margin-bottom: 2rem;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .blog-card-row {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-card-img {
+                height: 200px;
+            }
+
+            .blog-card-body {
+                padding: 1.5rem;
+            }
+
+            .blog-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+
+            .sidebar {
+                margin-top: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top transparent">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="bi bi-compass"></i> VietScape
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Trang Chủ</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="exploreDropdown" role="button"
+                            data-bs-toggle="dropdown">
+                            Khám Phá
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../pages/tours.html"><i class="bi bi-mountain"></i> Leo
+                                    Núi & Trekking</a></li>
+                            <li><a class="dropdown-item" href="../pages/tours.html"><i class="bi bi-water"></i> Biển Đảo
+                                    & Lặn</a></li>
+                            <li><a class="dropdown-item" href="../pages/tours.html"><i class="bi bi-geo-alt"></i> Hang
+                                    Động & Mạo Hiểm</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/tours.html">Tours</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/blog.html">Cẩm Nang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/about.html">Về Chúng Tôi</a>
+                    </li>
+                </ul>
+                <form class="d-flex search-form ms-3">
+                    <input class="form-control me-2" type="search" placeholder="Tìm bài viết..." aria-label="Search">
+                    <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <div class="container">
+            <div class="breadcrumb-custom">
+                <a href="../index.html">Trang Chủ</a>
+                <i class="bi bi-chevron-right"></i>
+                <br> <br>
+                <span>Cẩm Nang Du Lịch</span>
+            </div>
+            <h1><i class="bi bi-journal-text"></i> Cẩm Nang Du Lịch</h1>
+            <p>Kiến thức, kinh nghiệm và mẹo hữu ích cho những chuyến phiêu lưu của bạn</p>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="row">
+                <!-- Blog Posts -->
+                <div class="col-lg-8">
+                    <!-- Blog Post 1 -->
+                    <div class="blog-card">
+                        <div class="blog-card-row">
+                            <div class="blog-card-img">
+                                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop"
+                                    alt="Hướng dẫn Leo Fansipan">
+                                <div class="blog-date-badge">
+                                    <span class="day">15</span>
+                                    <span>Tháng 10</span>
+                                </div>
+                            </div>
+                            <div class="blog-card-body">
+                                <h3 class="blog-card-title">Hướng Dẫn Hoàn Chỉnh: Leo Fansipan An Toàn Và Hiệu Quả</h3>
+                                <div class="blog-meta">
+                                    <span class="blog-meta-item">
+                                        <i class="bi bi-person"></i>
+                                        <strong>Nguyễn Minh Đức</strong>
+                                    </span>
+                                    <span class="blog-meta-item">
+                                        <i class="bi bi-eye"></i>
+                                        2.5K lượt xem
+                                    </span>
+                                    <span class="blog-meta-item">
+                                        <i class="bi bi-chat"></i>
+                                        12 bình luận
+                                    </span>
+                                </div>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Leo Núi</span>
+                                    <span class="blog-tag">Trekking</span>
+                                    <span class="blog-tag">An Toàn</span>
+                                </div>
+                                <p class="blog-card-desc">Fansipan với độ cao 3.143m là đỉnh núi cao nhất Đông Dương.
+                                    Bài viết này sẽ hướng dẫn bạn cách chuẩn bị, lộ trình tối ưu và những lưu ý quan
+                                    trọng để leo núi an toàn...</p>
+                                <a href="#" class="read-more-btn"><i class="bi bi-arrow-right"></i> Đọc Thêm</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Post 2 -->
+                    <div class="blog-card">
+                        <div class="blog-card-row">
+                            <div class="blog-card-img">
+                                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop"
+                                    alt="Lặn biển an toàn">
+                                <div class="blog-date-badge">
+                                    <span class="day">12</span>
+                                    <span>Tháng 10</span>
+                                </div>
+                            </div>
+                            <div class="blog-card-body">
+                                <h3 class="blog-card-title">Những Điều Cần Biết Trước Khi Lặn Biển Lần Đầu</h3>
+                                <div class="blog-meta">
+                                    <span class="blog-meta-item">
+                                        <i class="bi bi-person"></i>
+                                        <strong>Trần Thu Hương</strong>
+                                    </span>
+                                    <span class="blog-meta-item">
+                                        <i class="bi bi-eye"></i>
+                                        3.1K lượt xem
+                                    </span>
+                                    <span class="blog-meta-item">
+                                        <i class="bi bi-chat"></i>
+                                        18 bình luận
+                                    </span>
+                                </div>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Lặn Biển</span>
+                                    <span class="blog-tag">Người Mới</span>
+                                    <span class="blog-tag">Kỹ Năng</span>
+                                </div>
+                                <p class="blog-card-desc">Lặn biển là một trải nghiệm tuyệt vời nhưng cũng có những rủi
+                                    ro nếu bạn không chuẩn bị kỹ. Bài viết này sẽ giáo dục bạn về các kỹ năng cơ bản,
+                                    loại thiết bị cần thiết...</p>
+                                <a href="#" class="read-more-btn"><i class="bi bi-arrow-right"></i> Đọc Thêm</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Post 3 -->
+                    <div class="blog-card">
+                        <div class="blog-card-row">
+                            <div class="blog-card-img">
+                                <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&h=300&fit=crop"
+                                    alt="Du lịch Hạ Long">
+                                <div class="blog-date-badge">
+                                    <span class="day">08</span>
+                                    <span>Tháng 10</span>
+                                </div>
+                            </div>
+                            <div class="blog-card-body">
+                                <h3 class="blog-card-title">Vịnh Hạ Long: 7 Điểm Du Lịch Không Thể Bỏ Qua</h3>
+                                <div class="blog-meta">
+                                    <span class="blog-meta-item">
+                                        <i class="bi bi-person"></i>
+                                        <strong>Phạm Hoàng Anh</strong>
+                                    </span>
+                                    <span class="blog-meta-item">
+                                        <i class="bi bi-eye"></i>
+                                        4.2K lượt xem
+                                    </span>
+                                    <span class="blog-meta-item">
+                                        <i class="bi bi-chat"></i>
+                                        25 bình luận
+                                    </span>
+                                </div>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Hạ Long</span>
+                                    <span class="blog-tag">Du Lịch</span>
+                                    <span class="blog-tag">Du Thuyền</span>
+                                </div>
+                                <p class="blog-card-desc">Hạ Long không chỉ nổi tiếng vì vẻ đẹp thiên nhiên mà còn có
+                                    nhiều điểm tham quan thú vị. Từ hang Sửng Sốt đến đảo Ti Tốp, khám phá những điểm
+                                    đến không thể bỏ qua...</p>
+                                <a href="#" class="read-more-btn"><i class="bi bi-arrow-right"></i> Đọc Thêm</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Post 4 -->
+                    <div class="blog-card">
+                        <div class="blog-card-row">
+                            <div class="blog-card-img">
+                                <img src="https://images.unsplash.com/photo-1511316695145-4992006ffddb?w=400&h=300&fit=crop"
+                                    alt="Sapa Du Lịch">
+                                <div class="blog-date-badge">
+                                    <span class="day">05</span>
+                                    <span>Tháng 10</span>
+                                </div>
+                            </div>
+                            <div class="blog-card-body">
+                                <h3 class="blog-card-title">Khám Phá Sapa: Hội Ở Bạc Hà Không Thể Bỏ Qua</h3>
+                                <div class="blog-meta">
+                                    <span class="blog-meta-item">
+                                        <i class="bi bi-person"></i>
+                                        <strong>Lý Minh Tuấn</strong>
+                                    </span>
+                                    <span class="blog-meta-item">
+                                        <i class="bi bi-eye"></i>
+                                        1.8K lượt xem
+                                    </span>
+                                    <span class="blog-meta-item">
+                                        <i class="bi bi-chat"></i>
+                                        8 bình luận
+                                    </span>
+                                </div>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Sapa</span>
+                                    <span class="blog-tag">Văn Hóa</span>
+                                    <span class="blog-tag">Thị Trường</span>
+                                </div>
+                                <p class="blog-card-desc">Hội ở Bạc Hà là một kinh nghiệm độc đáo để tìm hiểu về đời
+                                    sống dân bản địa. Bạn sẽ gặp gỡ những người dân tộc, mua sắm hàng thủ công và thưởng
+                                    thức ẩm thực địa phương...</p>
+                                <a href="#" class="read-more-btn"><i class="bi bi-arrow-right"></i> Đọc Thêm</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Post 5 -->
+                    <div class="blog-card">
+                        <div class="blog-card-row">
+                            <div class="blog-card-img">
+                                <img src="https://images.unsplash.com/photo-1502175353174-42a94b36b84d?w=400&h=300&fit=crop"
+                                    alt="Hang Sơn Đoòng">
+                                <div class="blog-date-badge">
+                                    <span class="day">01</span>
+                                    <span>Tháng 10</span>
+                                </div>
+                            </div>
+                            <div class="blog-card-body">
+                                <h3 class="blog-card-title">Thám Hiểm Hang Sơn Đoòng: Hang Động Lớn Nhất Thế Giới</h3>
+                                <div class="blog-meta">
+                                    <span class="blog-meta-item">
+                                        <i class="bi bi-person"></i>
+                                        <strong>Võ Văn Kiên</strong>
+                                    </span>
+                                    <span class="blog-meta-item">
+                                        <i class="bi bi-eye"></i>
+                                        5.3K lượt xem
+                                    </span>
+                                    <span class="blog-meta-item">
+                                        <i class="bi bi-chat"></i>
+                                        32 bình luận
+                                    </span>
+                                </div>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Hang Động</span>
+                                    <span class="blog-tag">Mạo Hiểm</span>
+                                    <span class="blog-tag">Thiên Nhiên</span>
+                                </div>
+                                <p class="blog-card-desc">Hang Sơn Đoòng là một trong những điểm đến du lịch mạo hiểm
+                                    hấp dẫn nhất ở Việt Nam. Với diện tích hơn 38 hectare, đây là hang động lớn nhất thế
+                                    giới. Hãy chuẩn bị tâm lý...</p>
+                                <a href="#" class="read-more-btn"><i class="bi bi-arrow-right"></i> Đọc Thêm</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination-section">
+                        <a href="#" class="page-link"><i class="bi bi-chevron-left"></i></a>
+                        <a href="#" class="page-link active">1</a>
+                        <a href="#" class="page-link">2</a>
+                        <a href="#" class="page-link">3</a>
+                        <a href="#" class="page-link">...</a>
+                        <a href="#" class="page-link">10</a>
+                        <a href="#" class="page-link"><i class="bi bi-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4 sidebar">
+                    <!-- Search Box -->
+                    <div class="sidebar-card">
+                        <h5><i class="bi bi-search"></i> Tìm Kiếm Bài Viết</h5>
+                        <form class="search-box" role="search">
+                            <input type="search" placeholder="Nhập từ khóa..." aria-label="Search">
+                            <button type="submit"><i class="bi bi-search"></i></button>
+                        </form>
+                    </div>
+
+                    <!-- Recent Posts -->
+                    <div class="sidebar-card">
+                        <h5><i class="bi bi-clock-history"></i> Bài Viết Mới Nhất</h5>
+                        <ul class="sidebar-list list-group list-group-flush">
+                            <li class="list-group-item">
+                                <a href="#"><i class="bi bi-chevron-right"></i> Hướng Dẫn Leo Fansipan An Toàn</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#"><i class="bi bi-chevron-right"></i> Những Điều Cần Biết Về Lặn Biển</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#"><i class="bi bi-chevron-right"></i> 7 Điểm Du Lịch Hạ Long</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#"><i class="bi bi-chevron-right"></i> Khám Phá Sapa: Chợ Bạc Hà</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#"><i class="bi bi-chevron-right"></i> Thám Hiểm Hang Sơn Đoòng</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="sidebar-card">
+                        <h5><i class="bi bi-tags"></i> Chuyên Mục</h5>
+                        <ul class="sidebar-list list-group list-group-flush">
+                            <li class="list-group-item">
+                                <a href="#"><i class="bi bi-chevron-right"></i> Leo Núi & Trekking (15)</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#"><i class="bi bi-chevron-right"></i> Biển Đảo & Lặn (12)</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#"><i class="bi bi-chevron-right"></i> Hang Động & Mạo Hiểm (8)</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#"><i class="bi bi-chevron-right"></i> Văn Hóa & Ẩm Thực (10)</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#"><i class="bi bi-chevron-right"></i> Kinh Nghiệm Du Lịch (20)</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Tags -->
+                    <div class="sidebar-card">
+                        <h5><i class="bi bi-tag"></i> Tags Phổ Biến</h5>
+                        <div class="blog-tags">
+                            <span class="blog-tag">Leo Núi</span>
+                            <span class="blog-tag">Trekking</span>
+                            <span class="blog-tag">Lặn Biển</span>
+                            <span class="blog-tag">Hạ Long</span>
+                            <span class="blog-tag">Sapa</span>
+                            <span class="blog-tag">Hang Động</span>
+                            <span class="blog-tag">Mạo Hiểm</span>
+                            <span class="blog-tag">An Toàn</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4 class="mb-3"><i class="bi bi-compass"></i> VietScape Adventures</h4>
+                    <p>Đồng hành cùng bạn trong mọi hành trình khám phá vẻ đẹp hoang dã Việt Nam</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                        <a href="#"><i class="bi bi-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Liên Kết Nhanh</h5>
+                    <div class="footer-links">
+                        <a href="../index.html">Trang Chủ</a>
+                        <a href="../pages/tours.html">Danh Sách Tours</a>
+                        <a href="../pages/blog.html">Cẩm Nang Du Lịch</a>
+                        <a href="../pages/about.html">Về Chúng Tôi</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Liên Hệ</h5>
+                    <p><i class="bi bi-geo-alt"></i> 123 Đường ABC, TP Hồ Chí Minh</p>
+                    <p><i class="bi bi-telephone"></i> 1900 1234</p>
+                    <p><i class="bi bi-envelope"></i> info@vietscape.com</p>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: #444;">
+            <div class="text-center">
+                <p>&copy; 2025 VietScape Adventures — Designed with ❤️ by Cao Đỉnh & Hải Đăng</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.remove('transparent');
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.add('transparent');
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>
